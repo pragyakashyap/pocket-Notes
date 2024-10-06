@@ -1,9 +1,9 @@
-import React from 'react'
+
 import './App.css'
 
-const FloatingActionButton = () => {
+const FloatingActionButton = ({onFabClick}) => {
   return (
-    <div className='FAB'>
+    <div className='FAB' onClick={onFabClick}>
         +
     </div>
   )

@@ -19,6 +19,9 @@
   height: 100vh;
   padding: 20px;
   background-color: #DAE5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .FAB{
   position: absolute;
@@ -35,6 +38,131 @@
   cursor: pointer;
   font-weight: bold;
   font-size: 35px;
+}
+
+/* Popup Modal */
+.popup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #2F2F2F60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 35%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.group-creation{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+.group-name{
+  margin-left: auto;
+  border-radius: 25px;
+  width: 42%;
+  padding: 1.5%;
+}
+
+
+.colors-block{
+  display: flex;
+  gap: 5.5px;
+  align-items: center;
+}
+
+
+.color-picker {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.create-button {
+  background-color: #001F8B;
+  color: white;
+  border: none;
+  padding: 6px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 80%;
+ 
+}
+
+.group-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.group-item.active {
+  background-color: #ddd;
+  border-radius: 8px;
+}
+
+.group-dp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: white;
+  margin-right: 10px;
+}
+
+.notes{
+  max-height: 70%; /* Set max height for scrollable area */
+  overflow-y: auto; /* Enable scrolling */
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.note {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.input-notes{
+  height: 20%;
+  width: 100%;
+  position: relative;
+  border: 10px solid #001F8B;
+  border-radius: 10px;
+}
+.input-area{
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  padding: 20px;
+
+}
+.input-button{
+  position: absolute;
+  bottom: 1em;
+  right: 0.5em;
 }
 
 @media (max-width:768px) {
