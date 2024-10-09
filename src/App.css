@@ -27,7 +27,7 @@
   background-color: #dae5f5;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: auto;
 }
 .on-startup {
   display: flex;
@@ -179,8 +179,8 @@
   margin-right: 10px;
 }
 .notes {
-  height: 60vh;
-  max-height: 60vh; /*Set max height for scrollable area*/
+  height: 90vh;
+  max-height: 90vh; /*Set max height for scrollable area*/
   overflow-y: scroll; /* Enable scrolling */
   padding: 10px;
   margin-bottom: 20px;
@@ -206,7 +206,7 @@
 }
 .input-area {
   margin: 0;
-  width: 96.5%;
+  width: 97%;
   height: 70%;
   padding: 10px;
   border-radius: 25px;
@@ -219,8 +219,8 @@
 }
 .input-button {
   position: absolute;
-  top: 5em;
-  right: 1.5em;
+  top: 3em;
+  right: 2em;
   width: 25px;
   height: 25px;
 }
@@ -268,13 +268,14 @@
   }
   .input-notes {
     width: 95%;
+    height: 25vh;
   }
   .input-area {
     width: 94%;
   }
   .input-button {
     top: 5.5em;
-    right: 0.5em;
+    right: 0.9em;
   }
   .heading {
     font-size: large;
