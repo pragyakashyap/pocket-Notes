@@ -1,12 +1,11 @@
+import "./App.css";
 
-import './App.css'
-
-const FloatingActionButton = ({onFabClick}) => {
+const FloatingActionButton = ({ onFabClick }) => {
   return (
-    <div className='FAB' onClick={onFabClick}>
-        +
+    <div className="FAB" onClick={onFabClick}>
+      +
     </div>
-  )
-}
+  );
+};
 
-export default FloatingActionButton
+export default FloatingActionButton;

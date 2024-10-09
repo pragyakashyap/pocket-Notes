@@ -20,22 +20,45 @@ const App = () => {
     groups.length > 1 ? groups[0] : null
   );
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const savedGroup = localStorage.getItem("groups");
     if (savedGroup) {
       const parsedGroups = JSON.parse(savedGroup);
       setGroups(parsedGroups);
-      setSelectedGroup(parsedGroups.length > 0 ? parsedGroups[0] : null); // Select first group if any
+      // setSelectedGroup(parsedGroups.length > 0 ? parsedGroups[0] : null); // Select first group if any
     }
   }, []);
+
+  useEffect(() => {
+    //detect mobile view (width<=768px)
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+
+    // Attach event listener to handle resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   // Function to toggle popup
   const handleFabClick = () => {
     setShowPopup(true); // Trigger popup visibility
   };
 
+  // Function to handle back button press in ContentArea
+  const handleBack = () => {
+    setSelectedGroup(null); // Go back to the sidebar (set selectedGroup to null)
+  };
+
   const handleClosePopup = () => {
-    
     if (groupName && selectedColor) {
       handleCreateGroup(groupName, selectedColor);
       setShowPopup(false); // Close the popup
@@ -59,7 +82,7 @@ const App = () => {
       groupColor: groupColor,
       notes: [],
     };
-    const updatedGroups=[...groups, newGroup]
+    const updatedGroups = [...groups, newGroup];
     setGroups(updatedGroups);
 
     // Immediately set the newly created group as the selected group
@@ -67,37 +90,68 @@ const App = () => {
     // Clear the input fields after creating the group
     setGroupName("");
     setSelectedColor(null);
-     // Save the updated groups to localStorage
+    // Save the updated groups to localStorage
     localStorage.setItem("groups", JSON.stringify(updatedGroups));
   };
 
   const getGroupInitial = (groupName) => {
-    const words=groupName.split(" ");
-    const firstLetter=words[0][0];
-    const lastLetter=words.length > 1 ? words[words.length-1][0] : words[0][1];
+    const words = groupName.split(" ");
+    const firstLetter = words[0][0];
+    const lastLetter =
+      words.length > 1 ? words[words.length - 1][0] : words[0][1];
     return firstLetter.toUpperCase() + lastLetter.toUpperCase();
-  }
+  };
 
   return (
     <div className="App">
-      <Sidebar
-        groups={groups}
-        clickGroup={handleGroupClick}
-        selectedGroup={selectedGroup}
-        getGroupInitial={getGroupInitial}
-      />
-      <FloatingActionButton onFabClick={handleFabClick} />
-      <ContentArea 
-        selectedGroup={selectedGroup} 
-        getGroupInitial={getGroupInitial}
-      />
+      {/* if device is mobile */}
+      {isMobile ? (
+        !selectedGroup ? (
+          <>
+            <Sidebar
+              groups={groups}
+              clickGroup={handleGroupClick}
+              selectedGroup={selectedGroup}
+              getGroupInitial={getGroupInitial}
+            />
+          </>
+        ) : (
+          <>
+            <ContentArea
+              selectedGroup={selectedGroup}
+              getGroupInitial={getGroupInitial}
+              onBack={handleBack}
+            />
+          </>
+        )
+      ) : (
+        <>
+          <Sidebar
+            groups={groups}
+            clickGroup={handleGroupClick}
+            selectedGroup={selectedGroup}
+            getGroupInitial={getGroupInitial}
+          />
+          <ContentArea
+            selectedGroup={selectedGroup}
+            getGroupInitial={getGroupInitial}
+            onBack={handleBack}
+          />{" "}
+        </>
+      )}
+
+      {isMobile && !selectedGroup && (
+        <FloatingActionButton onFabClick={handleFabClick} />
+      )}
+      {!isMobile && <FloatingActionButton onFabClick={handleFabClick} />}
+
       {/*PopUp Modal*/}
       {showPopup && (
         <div className="popup-modal">
           <div className="modal-content">
-            <h2>Create New Group</h2>
+            <h3 style={{ margin: "1em" }}>Create New Group</h3>
             <div className="group-creation">
-              <label>Group Name</label>
+              <label style={{ fontWeight: "500" }}>Group Name</label>
               <input
                 className="group-name"
                 type="text"
@@ -110,7 +164,7 @@ const App = () => {
             </div>
 
             <div className="color-picker">
-              <label>Choose colour</label>
+              <label style={{ fontWeight: "500" }}>Choose colour</label>
               <div className="colors-block">
                 {/* Color circles */}
                 {[

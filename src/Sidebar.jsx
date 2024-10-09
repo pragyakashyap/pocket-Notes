@@ -1,12 +1,11 @@
 import "./App.css";
-import React from "react";
 
 const Sidebar = ({ groups, clickGroup, selectedGroup, getGroupInitial }) => {
   return (
     <>
       <div className="Sidebar">
         <div className="heading">
-          <h2 style={{textAlign:"center"}}>Pocket Notes</h2>
+          <h2 style={{ textAlign: "center" }}>Pocket Notes</h2>
         </div>
         <div className="items">
           {groups.length > 0
@@ -27,7 +26,7 @@ const Sidebar = ({ groups, clickGroup, selectedGroup, getGroupInitial }) => {
                     {/* dp */}
                     {getGroupInitial(group.groupName)}
                   </div>
-                  <span>
+                  <span style={{ fontSize: "18px" }}>
                     {/* group name */}
                     {group.groupName}
                   </span>

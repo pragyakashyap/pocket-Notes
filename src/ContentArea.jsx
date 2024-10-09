@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { BiLock } from "react-icons/bi";
 import { IoSendSharp } from "react-icons/io5";
+import { MdArrowBack } from "react-icons/md"; // Back arrow icon for mobile view
 
-const ContentArea = ({ selectedGroup, getGroupInitial }) => {
+const ContentArea = ({ selectedGroup, getGroupInitial, onBack }) => {
   const [notes, setNotes] = useState([]);
   const [buttonState, setButtonState] = useState(false);
 
@@ -63,6 +64,12 @@ const ContentArea = ({ selectedGroup, getGroupInitial }) => {
                 {selectedGroup.groupName}
               </h2>
             </div>
+            <MdArrowBack
+              className="back-button"
+              style={{ position: "absolute", right: "2%", cursor: "pointer" }}
+              onClick={onBack}
+            />{" "}
+            {/* Back button */}
           </div>
           <div className="notes">
             {notes.reverse().map((note, index) => (
@@ -73,7 +80,7 @@ const ContentArea = ({ selectedGroup, getGroupInitial }) => {
                     fontSize: "12px",
                     color: "#353535",
                     textAlign: "right",
-                    fontWeight: 500
+                    fontWeight: 500,
                   }}
                 >
                   {/* Format date and time */}
@@ -82,8 +89,7 @@ const ContentArea = ({ selectedGroup, getGroupInitial }) => {
                     month: "short",
                     year: "numeric",
                   })}
-                  &nbsp;&nbsp;
-                 •{" "}
+                  &nbsp;&nbsp; •{" "}
                   {new Date(note.date).toLocaleTimeString("en-GB", {
                     hour: "2-digit",
                     minute: "2-digit",
