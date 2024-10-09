@@ -62,7 +62,6 @@ const App = () => {
       handleCreateGroup(groupName, selectedColor);
       setShowPopup(false); // Close the popup
     } else {
-      alert("Please enter a group name and select a color.");
       setShowPopup(false);
     }
   };
@@ -180,7 +179,7 @@ const App = () => {
                     style={{
                       backgroundColor: color,
                       border:
-                        selectedColor === color ? "1px solid black" : "none",
+                        selectedColor === color ? "2px solid black" : "none",
                     }}
                     onClick={() => handleColorSelect(color)}
                   ></div>

@@ -42,6 +42,13 @@ const ContentArea = ({ selectedGroup, getGroupInitial, onBack }) => {
       {selectedGroup ? (
         <>
           <div className="notes-heading">
+            <MdArrowBack
+              size={25}
+              className="back-button"
+              style={{ cursor: "pointer", marginLeft: "10px" }}
+              onClick={onBack}
+            />
+            {/* Back button */}
             <div
               className="group-dp"
               style={{
@@ -64,12 +71,6 @@ const ContentArea = ({ selectedGroup, getGroupInitial, onBack }) => {
                 {selectedGroup.groupName}
               </h2>
             </div>
-            <MdArrowBack
-              className="back-button"
-              style={{ position: "absolute", right: "2%", cursor: "pointer" }}
-              onClick={onBack}
-            />{" "}
-            {/* Back button */}
           </div>
           <div className="notes">
             {notes.reverse().map((note, index) => (

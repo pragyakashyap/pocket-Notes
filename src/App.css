@@ -52,7 +52,7 @@
   z-index: 1000;
 }
 .back-button {
-  visibility: hidden;
+  display: none;
 }
 /* Popup Modal */
 .popup-modal {
@@ -93,6 +93,8 @@
   padding: 1.5%;
   border: 1px solid #cccccc;
   padding-left: 20px;
+  height: 30px;
+  font-size: medium;
 }
 
 .heading {
@@ -147,7 +149,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 8px 0px;
+  margin: 5px 0px;
   cursor: pointer;
   padding: 10px;
 }
@@ -160,7 +162,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 8px 0px;
+  margin: 5px 0px;
   cursor: pointer;
 }
 
@@ -241,18 +243,23 @@
     width: 100%;
   }
   .FAB {
-    left: 85%;
+    left: 75%;
+    width: 70px;
+    height: 70px;
+    font-size: 55px;
+    z-index: 1000;
   }
   .items {
-    left: 5vw;
+    left: 10vw;
+    top: 10vh;
   }
   .create-button {
     margin-left: 70%;
   }
   .back-button {
-    visibility: visible;
-    width: 25px;
-    height: 25px;
+    display: block;
+    width: 30px;
+    height: 30px;
   }
 
   .modal-content {
@@ -268,5 +275,8 @@
   .input-button {
     top: 5.5em;
     right: 0.5em;
+  }
+  .heading {
+    font-size: large;
   }
 }
