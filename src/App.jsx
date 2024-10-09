@@ -27,7 +27,6 @@ const App = () => {
     if (savedGroup) {
       const parsedGroups = JSON.parse(savedGroup);
       setGroups(parsedGroups);
-      // setSelectedGroup(parsedGroups.length > 0 ? parsedGroups[0] : null); // Select first group if any
     }
   }, []);
 

@@ -139,7 +139,7 @@
   justify-content: flex-start;
   width: 100%;
   max-height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .group-item {
@@ -196,8 +196,6 @@
 
 .input-notes {
   height: 20vh;
-  /* padding: 10px; */
-  /* margin: 1em; */
   width: 76vw;
   border: 12px solid #001f8b;
   position: relative;
